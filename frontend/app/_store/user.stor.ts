@@ -5,7 +5,7 @@ interface UserState {
   user: any;
 token:string|null;
   setToken: (token: string|null) => void;
-  setUser: (user: { email: string }) => void;
+  setUser: (user: any) => void;
   clearUser: () => void;
 }
 
@@ -16,7 +16,7 @@ const useUserStore = create<UserState>()(
       token:null,
       setToken: (token: string|null) => set({ token }),
       setUser: (user: any) => set({ user }),
-      clearUser: () => set({ user: null }),
+      clearUser: () => set({ user: null,token:null }),
     }),
     {
       name: 'user-storage', 

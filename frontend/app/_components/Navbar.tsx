@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Menu, ShoppingCart } from "lucide-react";
 import useCartStore from "../_store/cart.store";
+import useUserStore from "../_store/user.stor";
 
 export default function Component() {
   const { cartCount } = useCartStore();
+  const { token, clearUser } = useUserStore();
 
   return (
     <header className="h-20 w-full shadow sticky flex justify-center">
@@ -30,25 +32,38 @@ export default function Component() {
               >
                 Home
               </Link>
-              <Link
-                href="/login"
-                className="flex w-full items-center py-2 text-lg font-semibold"
-                prefetch={false}
-              >
-                Login
-              </Link>
-              <Link
-                href="/register"
-                className="flex w-full items-center py-2 text-lg font-semibold"
-                prefetch={false}
-              >
-                Register
-              </Link>
+              {!token && (
+                <Link
+                  href="/login"
+                  className="flex w-full items-center py-2 text-lg font-semibold"
+                  prefetch={false}
+                >
+                  Login
+                </Link>
+              )}
+              {token && (
+                <Button
+                  size={"sm"}
+                  onClick={() => clearUser()}
+                  className="flex w-full items-center py-2 text-lg font-semibold"
+                >
+                  Logout
+                </Button>
+              )}
+              {!token && (
+                <Link
+                  href="/register"
+                  className="flex w-full items-center py-2 text-lg font-semibold"
+                  prefetch={false}
+                >
+                  Register
+                </Link>
+              )}
             </div>
           </SheetContent>
         </Sheet>
         <Link href="/" className="mr-6 hidden lg:flex" prefetch={false}>
-          <span className="">My Store</span>
+          <span className="">Buy Me! Store</span>
         </Link>
         <nav className="ml-auto hidden lg:flex gap-6">
           <Link
