@@ -1,6 +1,7 @@
 # Ignore node_modules in both frontend and backend
 frontend/node_modules/
 backend_d/node_modules/
+backend_d/.env
 frontend/.next/
 
 # Ignore root node_modules if applicable
