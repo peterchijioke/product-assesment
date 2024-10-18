@@ -4,12 +4,12 @@
   "description": "A product assessment tool",
   "main": "index.js",
   "scripts": {
-    "start": "pnpm run backend & pnpm run frontend",
-    "backend": "cd backend && pnpm start",
+    "start": "pnpm run backend_d & pnpm run frontend",
+    "backend": "cd backend_d && pnpm dev",
     "frontend": "cd frontend && pnpm dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Your Name",
+  "author": "Chijioke Peter",
   "license": "ISC"
 }
